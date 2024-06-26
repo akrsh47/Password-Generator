@@ -5,31 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
     <link rel="stylesheet" href="main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+<meta name="description" content="password generator">
+<meta name="author" content="Akarsh">
+
+
+
+
+
 </head>
 <body>
-    <section>
-        <div>Generate random a password</div>
-        <p>Never use an insecure password again</p>
+    <main>
+    <section class="sec1">
+        <div class="head1">Generate a <br><span class="margin white_space">random password</span></div>
+        
     </section>
 
-    <button onclick="generate()">Generate Password</button>
-    <br>
+    <div class="quot">Never use an insecure password again.</div>
 
-    <section>
-    <label for="textb">size: </label>
+    <section class="sec2">
+    <label for="textb"><b>size :</b> </label>
     <input id="inp" value="8" type="text" name="textb" readonly="readonly"></input>
-    <button onclick="incr()">&#8248;</button>
-    <button onclick="decr()">&#8964;</button>
+    <button onclick="incr()" class="but">&ShortUpArrow;</button>
+    <button onclick="decr()" class="but">&ShortDownArrow;</button>
     
     </section>
+
+    <button onclick="generate()" class="but2">Generate</button>
+    
+
+    
 
     <hr>
 
-    <section>
+    <section class="sec3">
         <div id="p1">...</div>
         <div id="p2">...</div>
     </section>
+
+   
+
+    </main>
+     
     
+    <footer>
+        copyright&copy;Akarsh
+    </footer>
 
     <script src="main.js"></script>
 </body>

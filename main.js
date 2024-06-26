@@ -32,6 +32,7 @@ function decr(){
     size-=1
     if (size<8){
         size=8
+        alert("minimum size of password 8")
     }
     inp_doc.value=size
     
