@@ -55,12 +55,10 @@ const characters = [
 
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-const spl_chr = ["@", "#", "$", "&"];
+const spl_chr = ["@", "#", "$"];
 
 const inpnum_doc = document.getElementById("num");
 const inpspl_doc = document.getElementById("spl");
-
-
 
 let size = 8;
 let inp_doc = document.querySelector("#inp");
@@ -93,11 +91,10 @@ let pass_rand1 = Math.floor(Math.random() * characters.length);
 let password2 = "";
 let pass_rand2 = Math.floor(Math.random() * characters.length);
 
-const  p1_doc = document.querySelector("#p1");
-const  p2_doc = document.querySelector("#p2");
+const p1_doc = document.querySelector("#p1");
+const p2_doc = document.querySelector("#p2");
 
 function generate() {
-
   // first password
 
   for (let i = 0; i < size; i++) {
@@ -182,23 +179,35 @@ function generate() {
     }
   }
 
-
-  function clickToCopy(x){
+  function clickToCopy(x) {
     navigator.clipboard.writeText(x);
   }
 
-  p1_doc.addEventListener("click",function(){
+  p1_doc.addEventListener("click", function () {
     clickToCopy(p1_doc.textContent);
-    
-  })
+  });
 
-  p2_doc.addEventListener("click",function(){
+  p2_doc.addEventListener("click", function () {
     clickToCopy(p2_doc.textContent);
-  })
+  });
 
   p1_doc.textContent = password1;
   p2_doc.textContent = password2;
 
   password1 = "";
   password2 = "";
+
+  changeColourNum(p1_doc);
+  changeColourNum(p2_doc);
+}
+
+function changeColourNum(x) {
+  for (let i = 0; i < x.textContent.length; i++) {
+    if (isNaN(x.textContent[i]) == false) {
+      x.innerHTML = x.innerHTML.replace(
+        `${x.textContent[i]}`,
+        `<span style="color:red;">${x.textContent[i]}</span>`
+      );
+    }
+  }
 }
