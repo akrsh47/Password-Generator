@@ -60,12 +60,14 @@ const spl_chr = ["@", "#", "$", "&"];
 const inpnum_doc = document.getElementById("num");
 const inpspl_doc = document.getElementById("spl");
 
+
+
 let size = 8;
 let inp_doc = document.querySelector("#inp");
 inp_doc.value = size;
 
-let choice_inp = [0, 1, 2];
 let rand_choice = Math.floor(Math.random() * 3);
+let rand_choice2 = Math.floor(Math.random() * 3);
 //console.log(rand_choice)
 
 function incr() {
@@ -91,13 +93,15 @@ let pass_rand1 = Math.floor(Math.random() * characters.length);
 let password2 = "";
 let pass_rand2 = Math.floor(Math.random() * characters.length);
 
-let p1_doc = document.querySelector("#p1");
-let p2_doc = document.querySelector("#p2");
+const  p1_doc = document.querySelector("#p1");
+const  p2_doc = document.querySelector("#p2");
 
 function generate() {
+
   // first password
+
   for (let i = 0; i < size; i++) {
-    if (inpnum_doc.checked && inpspl_doc.checked==false) {
+    if (inpnum_doc.checked && inpspl_doc.checked == false) {
       rand_choice = Math.floor(Math.random() * 5);
 
       if (rand_choice == 1) {
@@ -107,7 +111,7 @@ function generate() {
         pass_rand1 = Math.floor(Math.random() * characters.length);
         password1 += characters[pass_rand1];
       }
-    } else if (inpspl_doc.checked && inpnum_doc.checked==false) {
+    } else if (inpspl_doc.checked && inpnum_doc.checked == false) {
       rand_choice = Math.floor(Math.random() * 5);
 
       if (rand_choice == 1) {
@@ -120,31 +124,77 @@ function generate() {
     } else if (inpnum_doc.checked == false && inpspl_doc.checked == false) {
       pass_rand1 = Math.floor(Math.random() * characters.length);
       password1 += characters[pass_rand1];
-    }
+    } else if (inpnum_doc.checked && inpspl_doc.checked) {
+      rand_choice = Math.floor(Math.random() * 5);
 
-    else if(inpnum_doc.checked && inpspl_doc.checked){
-      rand_choice = Math.floor(Math.random() *5);
-
-        if(rand_choice==0){
-            pass_rand1 = Math.floor(Math.random() * spl_chr.length);
+      if (rand_choice == 0) {
+        pass_rand1 = Math.floor(Math.random() * spl_chr.length);
         password1 += spl_chr[pass_rand1];
-        }
-        else if(rand_choice==1){
-            pass_rand1 = Math.floor(Math.random() * numbers.length);
+      } else if (rand_choice == 1) {
+        pass_rand1 = Math.floor(Math.random() * numbers.length);
         password1 += numbers[pass_rand1];
-        }
-        else{
-            pass_rand1 = Math.floor(Math.random() * characters.length);
+      } else {
+        pass_rand1 = Math.floor(Math.random() * characters.length);
         password1 += characters[pass_rand1];
-        }
+      }
     }
   }
 
   // second password
-  for (let j = 0; j < size; j++) {
-    password2 += characters[pass_rand2];
-    pass_rand2 = Math.floor(Math.random() * characters.length);
+
+  for (let i = 0; i < size; i++) {
+    if (inpnum_doc.checked && inpspl_doc.checked == false) {
+      rand_choice2 = Math.floor(Math.random() * 5);
+
+      if (rand_choice2 == 1) {
+        pass_rand2 = Math.floor(Math.random() * numbers.length);
+        password2 += numbers[pass_rand2];
+      } else {
+        pass_rand2 = Math.floor(Math.random() * characters.length);
+        password2 += characters[pass_rand2];
+      }
+    } else if (inpspl_doc.checked && inpnum_doc.checked == false) {
+      rand_choice2 = Math.floor(Math.random() * 5);
+
+      if (rand_choice2 == 1) {
+        pass_rand2 = Math.floor(Math.random() * spl_chr.length);
+        password2 += spl_chr[pass_rand2];
+      } else {
+        pass_rand2 = Math.floor(Math.random() * characters.length);
+        password2 += characters[pass_rand2];
+      }
+    } else if (inpnum_doc.checked == false && inpspl_doc.checked == false) {
+      pass_rand2 = Math.floor(Math.random() * characters.length);
+      password2 += characters[pass_rand2];
+    } else if (inpnum_doc.checked && inpspl_doc.checked) {
+      rand_choice2 = Math.floor(Math.random() * 5);
+
+      if (rand_choice2 == 0) {
+        pass_rand2 = Math.floor(Math.random() * spl_chr.length);
+        password2 += spl_chr[pass_rand2];
+      } else if (rand_choice2 == 1) {
+        pass_rand2 = Math.floor(Math.random() * numbers.length);
+        password2 += numbers[pass_rand2];
+      } else {
+        pass_rand2 = Math.floor(Math.random() * characters.length);
+        password2 += characters[pass_rand2];
+      }
+    }
   }
+
+
+  function clickToCopy(x){
+    navigator.clipboard.writeText(x);
+  }
+
+  p1_doc.addEventListener("click",function(){
+    clickToCopy(p1_doc.textContent);
+    
+  })
+
+  p2_doc.addEventListener("click",function(){
+    clickToCopy(p2_doc.textContent);
+  })
 
   p1_doc.textContent = password1;
   p2_doc.textContent = password2;
