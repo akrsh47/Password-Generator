@@ -60,6 +60,9 @@ const spl_chr = ["@", "#", "$"];
 const inpnum_doc = document.getElementById("num");
 const inpspl_doc = document.getElementById("spl");
 
+const cpymssg_doc = document.querySelector(".cpymssg");
+const main_doc = document.getElementById("main");
+
 let size = 8;
 let inp_doc = document.querySelector("#inp");
 inp_doc.value = size;
@@ -93,6 +96,8 @@ let pass_rand2 = Math.floor(Math.random() * characters.length);
 
 const p1_doc = document.querySelector("#p1");
 const p2_doc = document.querySelector("#p2");
+
+let shown = "false";
 
 function generate() {
   // first password
@@ -211,3 +216,15 @@ function changeColourNum(x) {
     }
   }
 }
+
+window.onclick = function (e) {
+  if (e.target == p1_doc || e.target == p2_doc) {
+    cpymssg_doc.classList.add("cpymssgshow");
+    main_doc.classList.add("dimbg");
+
+    setTimeout(function () {
+      cpymssg_doc.classList.remove("cpymssgshow");
+      main_doc.classList.remove("dimbg");
+    }, 1000);
+  }
+};
